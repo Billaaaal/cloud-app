@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+
+
+.sidePannelButtonContainer{
+    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.sidePannelButton, .sidePannelFirstButton{
+    width: 65px;
+    height: 65px;
+    border-radius: 13.333px;
+    border:none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor:pointer;
+
+}
+
+.sidePannelButton{
+
+    background: #ECEFF7; 
+
+}
+
+.sidePannelButton:hover{
+
+    background: #c1d2ff; 
+
+}
+
+.sidePannelFirstButton{
+
+    background: #51459E;
+
+
+}
+
+.sidePannelFirstButton:hover{
+
+    background: #3D347F;
+
+
+
+
+
+}
+
+
+
+
+
+.sidePannelButtonTitle{
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 0.4rem;
+    margin-top: 0px;
+}
+.sidePannelButtonIcon{
+    width: 32px;
+    height: 32px;
+}
+
+.sidePannelButtonTitle{
+    color: #7987A5;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 15px;
+    font-family: 'Poppins';
+}

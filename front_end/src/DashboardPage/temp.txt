@@ -1,0 +1,14 @@
+<FileUploader dropMessageStyle={{opacity:"1", borderRadius: "10px" ,width:"800px", height:"300px", marginTop:"70px",backgroundColor: "white", backgroundImage: "repeating-linear-gradient(0deg, #8cb8f4, #8cb8f4 14px, transparent 14px, transparent 18px, #8cb8f4 18px), repeating-linear-gradient(90deg, #8cb8f4, #8cb8f4 14px, transparent 14px, transparent 18px, #8cb8f4 18px), repeating-linear-gradient(180deg, #8cb8f4, #8cb8f4 14px, transparent 14px, transparent 18px, #8cb8f4 18px), repeating-linear-gradient(270deg, #8cb8f4, #8cb8f4 14px, transparent 14px, transparent 18px, #8cb8f4 18px)", backgroundSize: "4px 100%, 100% 4px, 4px 100% , 100% 4px", backgroundPosition: "0 0, 0 0, 100% 0, 0 100%", backgroundRepeat: "no-repeat" }}>
+              <div id={styles.dragDropSurface}>
+                <div id={styles.dragDropIconContainer}>
+
+                <img src={"https://cdn-icons-png.flaticon.com/512/2716/2716054.png"} id={styles.dragDropIcon}></img>
+
+
+                </div>
+                <h1 id={styles.dragDropText}>Drag and drop files, or <span id={styles.dragDropBrowseText}>Browse</span></h1>
+              </div>
+            </FileUploader>
+
+
+

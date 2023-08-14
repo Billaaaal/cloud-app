@@ -1,0 +1,239 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
+
+
+html, body, #root{
+
+    width: 100%;
+    background-color: #ffff;
+    
+    
+    
+}
+
+
+.app{
+
+    overflow-y:auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f7f8fd;
+
+    
+}
+
+
+.navbar{
+    width: 70%;
+    margin-top: 30px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+
+    height: 100%;
+
+
+
+}
+
+.navButtons{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+
+}
+
+.navButtonElement, .navButtonLoginElement{
+
+    margin-left:25px;
+    margin-right:25px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-size:1rem;
+    
+
+}
+
+.navButtonElement{
+    color:#03045E;
+    font-weight: 500;
+}
+
+
+
+.navButtonLoginElement{
+    font-weight: 700;
+    border: none;
+    height: 45px;
+    width: 110px;
+    border-radius: 5px;
+    background-color: #03045E;
+    color:white;
+    cursor:pointer;
+    margin-right:0px;
+
+}
+
+.navButtonLoginElement:hover{
+
+    background-color: #1c1d73;
+
+
+}
+
+.mainContent{
+    margin-top: 100px;
+    max-width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainContentTextContainer{
+    align-self: center;
+    width:49%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    
+}
+
+
+
+
+
+.mainContentIllustration{
+    display: flex;
+    height: 100%;
+    width:49%;
+}
+
+.title{
+    font-family: 'Ubuntu';
+    color: #03045E;
+    font-size: 3.5rem;
+
+}
+
+.paragraph{
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 1rem;
+    max-width: 85%;
+    color:#03045E;
+
+}
+
+.mainButton{
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 1.2rem;
+
+    border: none;
+    margin-top: 20px;
+    height: 70px;
+    width: 200px;
+    border-radius: 8px;
+    background-color: #0098FF;
+    color:white;
+    cursor:pointer;
+    align-self: flex-start;
+
+}
+
+.mainButton:hover{
+
+    background-color: #32acfd;
+
+
+}
+
+
+
+@media screen and (max-width: 880px){
+    
+        .mainContent{
+            
+            flex-direction: column;
+            width: 80%;
+        }
+
+        .mainContentTextContainer{
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        .mainContentIllustration{
+            width: 100%;
+        }
+
+        .title{
+            font-size: 3rem;
+        
+        }
+
+        .paragraph{
+            font-size: 1rem;
+            max-width: 100%;
+        }
+
+        
+
+    
+}
+
+@media screen and (max-width: 1080px){
+
+    
+
+    .navbar{
+        width: 100%;
+    }
+
+    
+    
+
+}
+
+
+@media screen and (max-width: 1150px){
+
+    .navbar{
+        width: 90%;
+    }
+    
+    
+
+}
+
+@media screen and (max-width: 900px){
+
+    .navButtonElement, .navButtonLoginElement{
+
+        margin-left:10px;
+        margin-right:10px;
+    
+    }
+    
+    
+
+}
+
+
+
+
+

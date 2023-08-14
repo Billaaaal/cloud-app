@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Gotham Rounded';
+    src: local('Gotham Rounded'), url(./GothamRoundedBold_21016.ttf) format('truetype');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+
+.recentFilesButton{
+    background-color: #F6F5FF;
+    width: 225px;
+    min-width: 225px;
+    height: 180px;
+    outline: none;
+    border: none;
+    border-radius: 13px;
+    box-shadow: 0px 2.4691355228424072px 4.197530746459961px 0px rgba(158, 160, 249, 0.02), 0px 10.864197731018066px 8.691357612609863px 0px rgba(158, 160, 249, 0.03), 0px 26.66666603088379px 17.333332061767578px 0px rgba(158, 160, 249, 0.04), 0px 51.358028411865234px 33.97530746459961px 0px rgba(158, 160, 249, 0.04), 0px 28.80666732788086px 62.46913146972656px 0px rgba(158, 160, 249, 0.05), 0px 44.44333267211914px 106.66666412353516px 0px rgba(158, 160, 249, 0.07);     
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+
+
+
+
+
+}
+
+.thumbnail{
+    width: 100%;
+    height: 120px;
+    border-radius: 13px 13px 0px 0px;
+
+
+}
+
+.detailsContainer{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    background-color: transparent;
+}
+
+.thumbnail:hover{
+    
+
+    /*webkit-filter: blur(3px);  Chrome, Safari, Opera 
+    filter: blur(3px);    */
+}
+
+.recentFilesButton:hover{
+    cursor: pointer;
+    background-color: #ECEBFF;
+}
+
+.fileTypeIcon{
+    height: 40px;
+    width:40px;
+    margin-left: 5px;
+    color: white;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal; 
+    font-family: 'Gotham Rounded';
+    background-color: orange;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fileNameText{
+    color: #25396F;
+    font-size: 16px;
+    font-family: DM Sans;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal; 
+    margin-left: 10px;
+}
+
+
+@media screen and (max-width: 700px){
+
+    
+    .recentFilesButton{
+        background-color: #F6F5FF;
+        width: 137.5px;
+        min-width: 137.5px;
+        height: 110px;
+
+    
+    }
+
+
+    
+
+    
+
+
+    .detailsContainer{
+        width: 100%;
+        height: 35px;
+        font-size: 10px;
+    }
+
+
+    .fileTypeIcon{
+        width: 25px;
+        height: 25px;
+        font-size: 10px;
+    }
+
+}

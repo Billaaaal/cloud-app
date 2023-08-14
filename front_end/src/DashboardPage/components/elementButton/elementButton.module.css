@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
+
+@font-face {
+    font-family: 'Gotham Rounded';
+    src: local('Gotham Rounded'), url(./GothamRoundedBold_21016.ttf) format('truetype');
+    /* other formats include: 'woff2', 'truetype, 'opentype',
+                              'embedded-opentype', and 'svg' */
+  }
+
+
+.elementButton{
+    cursor: pointer;
+    height: 60px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-direction: row;
+    width: 100%;
+}
+
+.elementButton:hover{
+    background-color: rgb(233, 229, 229)
+}
+
+.folderIcon{
+    height: 40px;
+    width: 40px;
+    fill: #ff8c00;
+    margin-left: 20px;
+}
+
+.fileTypeIcon{
+    color: white;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal; 
+    font-family: 'Gotham Rounded';
+    width: 40px;
+    height: 40px;
+    background-color: orange;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+
+ 
+}
+
+.elementName{
+    flex-basis: calc(31% - 5px);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal; 
+    font-family: 'DM Sans', sans-serif;
+}
+
+
+.date{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-family: 'DM ans', sans-serif;   
+    flex-basis: calc(23%);
+
+
+
+}
+
+.size{
+    flex-basis: calc(17%);
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    font-family: 'DM Sans', sans-serif;;
+}
+
+
+@media screen and (max-width: 650px) {
+
+
+    .elementName{
+
+    }
+
+    .date{
+    }
+
+    .size{
+    }
+    
+
+
+
+}
