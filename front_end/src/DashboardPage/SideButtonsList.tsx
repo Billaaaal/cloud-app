@@ -9,52 +9,47 @@ import videos from './assets/videos.png';
 import documents from './assets/documents.svg';
 import signed from './assets/signed.png';
 
-
-
-
-
-
 const SideButtonsList = [
-    {
-      title: 'Dashboard',
-      image: dashboard
-    },
-    {
-        title: 'All Files',
-        image: allFiles
-    },
-    {
-        title: 'Shared',
-        image: shared
-    },
-    {
-        title: 'Favorites',
-        image: favorites
-    },
-    {
-        title: 'Recent',
-        image: recent
-    },
-    {
-        title: 'Request',
-        image: request
-    },
-    {
-        title: 'Pictures',
-        image: pictures
-    },
-    {
-        title: 'Videos',
-        image: videos
-    },
-    {
-        title: 'Documents',
-        image: documents
-    },
-    {
-        title: 'Signed',
-        image: signed
-    },
-  ];
-  
+  {
+    title: 'Dashboard',
+    image: dashboard,
+  },
+  {
+    title: 'All Files',
+    image: allFiles,
+  },
+  {
+    title: 'Shared',
+    image: shared,
+  },
+  {
+    title: 'Favorites',
+    image: favorites,
+  },
+  {
+    title: 'Recent',
+    image: recent,
+  },
+  {
+    title: 'Request',
+    image: request,
+  },
+  {
+    title: 'Pictures',
+    image: pictures,
+  },
+  {
+    title: 'Videos',
+    image: videos,
+  },
+  {
+    title: 'Documents',
+    image: documents,
+  },
+  {
+    title: 'Signed',
+    image: signed,
+  },
+];
+
 export default SideButtonsList;

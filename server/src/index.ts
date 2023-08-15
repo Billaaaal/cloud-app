@@ -6,22 +6,22 @@ import cors from "cors";
 import admin from "firebase-admin";
 import { readdirSync, rmSync, writeFileSync, mkdirSync } from "fs";
 //import the realtime database
-import createuser from './routes/createuser/createuser';
-import upload from './routes/upload/upload';
+import createuser from "./routes/createuser/createuser";
+import upload from "./routes/upload/upload";
 import newfolder from "./routes/newfolder/newfolder";
-
+import rename from "./routes/rename/rename";
+import Delete from "./routes/delete/Delete";
 var serviceAccount = require("./credentials.json");
 
 //
 
-console.log("Hello world !")
+//console.log("Hello world !");
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://cloudapp-b1e10-default-rtdb.europe-west1.firebasedatabase.app"
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL:
+    "https://cloudapp-b1e10-default-rtdb.europe-west1.firebasedatabase.app",
 });
-
-
 
 const app = express();
 
@@ -29,31 +29,24 @@ const port = 5000;
 
 //app.use(express.json({limit: '5000mb'}));
 
+app.use(cors());
 
-app.use(cors())
+app.get("/", (req, res) => {
+  res.send("Hello world !");
+});
 
+app.use("/api/create-user", createuser);
 
+app.use("/api/upload", upload);
 
+app.use("/api/new-folder", newfolder);
 
-app.get('/', (req, res) => {
-    res.send("Hello world !")
-})
-
-
-app.use('/api/create-user', createuser);
-
-
-
-
-app.use('/api/upload', upload);
+app.use("/api/rename", rename);
 
 
-app.use('/api/new-folder', newfolder)
-
+app.use("/api/delete", Delete);
 
 //app.use(middleware.decodeToken)
-
-
 
 //app.get("/api/listfiles")
 
@@ -61,16 +54,8 @@ app.use('/api/new-folder', newfolder)
 
 //app.get("/api/downloadfile")
 
-
 //app.get("/api/deletefile")
 
-
-
-
-
 app.listen(port, () => {
-    
-    console.log(`server is listening on ${port}`);
-
+  //console.log(`server is listening on ${port}`);
 });
-

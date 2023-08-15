@@ -4,77 +4,56 @@
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap');
 
-
-.sidePannelButtonContainer{
-    
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+.sidePannelButtonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.sidePannelButton, .sidePannelFirstButton{
-    width: 65px;
-    height: 65px;
-    border-radius: 13.333px;
-    border:none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    cursor:pointer;
-
+.sidePannelButton,
+.sidePannelFirstButton {
+  width: 65px;
+  height: 65px;
+  border-radius: 13.333px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.sidePannelButton{
-
-    background: #ECEFF7; 
-
+.sidePannelButton {
+  background: #eceff7;
 }
 
-.sidePannelButton:hover{
-
-    background: #c1d2ff; 
-
+.sidePannelButton:hover {
+  background: #c1d2ff;
 }
 
-.sidePannelFirstButton{
-
-    background: #51459E;
-
-
+.sidePannelFirstButton {
+  background: #51459e;
 }
 
-.sidePannelFirstButton:hover{
-
-    background: #3D347F;
-
-
-
-
-
+.sidePannelFirstButton:hover {
+  background: #3d347f;
 }
 
-
-
-
-
-.sidePannelButtonTitle{
-    font-family: 'Poppins';
-    font-weight: 600;
-    font-size: 0.4rem;
-    margin-top: 0px;
+.sidePannelButtonTitle {
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 0.4rem;
+  margin-top: 0px;
 }
-.sidePannelButtonIcon{
-    width: 32px;
-    height: 32px;
+.sidePannelButtonIcon {
+  width: 32px;
+  height: 32px;
 }
 
-.sidePannelButtonTitle{
-    color: #7987A5;
-    text-align: center;
-    font-size: 12px;
-    margin-top: 15px;
-    font-family: 'Poppins';
+.sidePannelButtonTitle {
+  color: #7987a5;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 15px;
+  font-family: 'Poppins';
 }

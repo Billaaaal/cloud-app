@@ -1,151 +1,117 @@
 @font-face {
-    font-family: 'Gotham Rounded';
-    src: local('Gotham Rounded'), url(./GothamRoundedBold_21016.ttf) format('truetype');
-    /* other formats include: 'woff2', 'truetype, 'opentype',
+  font-family: 'Gotham Rounded';
+  src:
+    local('Gotham Rounded'),
+    url(./GothamRoundedBold_21016.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
                               'embedded-opentype', and 'svg' */
 }
 
-
-
-#modal{
-    
-    width: 450px;
-    height: 250px;
-    background-color: orange;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-
-
-
+#modal {
+  width: 450px;
+  height: 250px;
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
 }
 
-#topModalContainer{
-    width: 100%;
-    height: 30px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+#topModalContainer {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
-
-#renameTitle{
-
-    color: #505887;
-    font-size: 22px;
-    font-family: DM Sans;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+#renameTitle {
+  color: #505887;
+  font-size: 22px;
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
-#closeModalButton{
-    background-color:rgb(255, 255, 255);
-    width: 30px;
-    height: 30px;
-    border: none;
-    outline: none;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    content: '';
-    color:black;
-    font-size: 24px
+#closeModalButton {
+  background-color: rgb(255, 255, 255);
+  width: 30px;
+  height: 30px;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  content: '';
+  color: black;
+  font-size: 24px;
 }
 
-
-#closeModalButton:hover{
-    background-color: #e1d7d7;
+#closeModalButton:hover {
+  background-color: #e1d7d7;
 }
 
-
-
-#modalTextInput{
-    margin-top: 60px;
-    width: 98%;
-    height: 50px;
-    border-radius: 9px;
-    background-color: #f4f3fa;
-    border: none;
-    text-indent: 10px;
-
-    
+#modalTextInput {
+  margin-top: 60px;
+  width: 98%;
+  height: 50px;
+  border-radius: 9px;
+  background-color: #f4f3fa;
+  border: none;
+  text-indent: 10px;
 }
 
-#modalTextInput[type="text"]{
-
-    font-family: 'Poppins';
-    font-weight: 400;
-    font-size: 1.2rem;
-
-    
-
-    
+#modalTextInput[type='text'] {
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 1.2rem;
 }
 
 #modalTextInput::placeholder {
-
-    color: #A7A3FF;
-    font-family: 'Poppins';
-    font-weight: 400;
-    font-size: 1.2rem;
-
-    
+  color: #a7a3ff;
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 1.2rem;
 }
 
-
-
-
-
-#bottomModalContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: end;
-    margin-top: 80px;
+#bottomModalContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: end;
+  margin-top: 80px;
 }
 
-
-#renameButton, #cancelButton{
-    font-weight: 700;
-    border: none;
-    height: 40px;
-    width: 110px;
-    border-radius: 8px;
-    background-color: #03045E;
-    cursor:pointer;
-    margin-right:0px;
-
+#renameButton,
+#cancelButton {
+  font-weight: 700;
+  border: none;
+  height: 40px;
+  width: 110px;
+  border-radius: 8px;
+  background-color: #03045e;
+  cursor: pointer;
+  margin-right: 0px;
 }
 
-
-#renameButton{
-
-    color:white;
-    margin-right: 20px;
-
+#renameButton {
+  color: white;
+  margin-right: 20px;
 }
 
-#renameButton:hover{
-
-    background-color: #2d2fa7;
-
-
+#renameButton:hover {
+  background-color: #2d2fa7;
 }
 
-
-
-#cancelButton{
-    background-color:#d4e0ff55;
+#cancelButton {
+  background-color: #d4e0ff55;
 }
 
-#cancelButton:hover{
-
-    background-color: #d4d7ff;
-
+#cancelButton:hover {
+  background-color: #d4d7ff;
 }

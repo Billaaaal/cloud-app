@@ -1,140 +1,101 @@
 @font-face {
-    font-family: 'Gotham Rounded';
-    src: local('Gotham Rounded'), url(./GothamRoundedBold_21016.ttf) format('truetype');
-    /* other formats include: 'woff2', 'truetype, 'opentype',
+  font-family: 'Gotham Rounded';
+  src:
+    local('Gotham Rounded'),
+    url(./GothamRoundedBold_21016.ttf) format('truetype');
+  /* other formats include: 'woff2', 'truetype, 'opentype',
                               'embedded-opentype', and 'svg' */
 }
 
-
-
-.uploadedFilesContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 40px;
-
+.uploadedFilesContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
 }
 
-
-
-.uploadedFileContainer{
-    width: 100%;
-    height:100px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: ;
-    border-radius: 6px;
+.uploadedFileContainer {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 6px;
 }
 
-
-.uploadedFileIcon{
-    height: 60px;
-    width: 60px;
-    margin-left: 15px;
-    background-color: ;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-
-
-
+.uploadedFileIcon {
+  height: 60px;
+  width: 60px;
+  margin-left: 15px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-
-.fileTypeIconText{
-
-
-    color: white;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 800;
-    line-height: normal; 
-    font-family: 'Gotham Rounded';
-
+.fileTypeIconText {
+  color: white;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  font-family: 'Gotham Rounded';
 }
 
-.uploadedFileDetailsContainer{
-    background-color: ;
-    margin-left: 30px;
-    height: 70px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: start;
-    flex-grow: 1;
-
+.uploadedFileDetailsContainer {
+  margin-left: 30px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: start;
+  flex-grow: 1;
 }
 
-
-
-.uploadedFileProgressBarContainer{
-
-    height: 10px;
-    width: 100%;
-    background-color: #F6F9FF;
-    border-radius: 5px;
-    display: flex;
-    margin-top: 0px;
-
+.uploadedFileProgressBarContainer {
+  height: 10px;
+  width: 100%;
+  background-color: #f6f9ff;
+  border-radius: 5px;
+  display: flex;
+  margin-top: 0px;
 }
 
-.uploadedFileProgressBar{
-
-    height: 100%;
-    background-color: #FF6E91;
-    border-radius: 5px;
-    display: flex;
+.uploadedFileProgressBar {
+  height: 100%;
+  background-color: #ff6e91;
+  border-radius: 5px;
+  display: flex;
 }
 
-
-
-.uploadedFileProgressTextContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    background-color: ;
-    width: 100%;
-
+.uploadedFileProgressTextContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
 }
 
-
-
-.uploadedFileNameText{
-    font-size: 14px;
-    font-style: normal;
-    line-height: normal; 
-    font-family: 'DM Sans', sans-serif;
-    margin-top: 0px;
+.uploadedFileNameText {
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  font-family: 'DM Sans', sans-serif;
+  margin-top: 0px;
 }
 
-.uploadedFileSizeProgressPercentageText{
-    font-size: 14px;
-    font-style: normal;
-    line-height: normal; 
-    font-family: 'DM Sans', sans-serif;
-    margin-left: auto;
-
+.uploadedFileSizeProgressPercentageText {
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  font-family: 'DM Sans', sans-serif;
+  margin-left: auto;
 }
 
-
-
-.uploadedFileSizeProgressText{
-    font-size: 14px;
-    font-style: normal;
-    line-height: normal; 
-    font-family: 'DM Sans', sans-serif;
+.uploadedFileSizeProgressText {
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+  font-family: 'DM Sans', sans-serif;
 }
-
-
-
-
-
-
-
-
-
