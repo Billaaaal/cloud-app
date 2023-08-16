@@ -17,7 +17,7 @@ function getElementContentFromDB(
   var db = admin.database();
   //for realtime database
 
-  var pathToElement = "users/" + uid + path.replace(".", ",");
+  var pathToElement = "users/" + uid + path.split(".").join(",");
 
   db.ref(pathToElement)
     .once("value")
@@ -42,7 +42,7 @@ function deleteElementInDB(
   var db = admin.database();
   //for realtime database
 
-  var pathToElement = "users/" + uid + path.replace(".", ",");
+  var pathToElement = "users/" + uid + path.split(".").join(",");
 
   db.ref(pathToElement)
     .remove()
@@ -61,7 +61,7 @@ function processItems(obj: any, oldPath: string, newPath: string) {
     if (item.type === "folder") {
       // Update path for folders
       //item.path = item.path.replace(item, ",");
-      item.path = item.path.replace(oldPath, newPath).replace(".", ",");
+      item.path = item.path.replace(oldPath, newPath).split(".").join(",");
 
       // Recursively process nested items
       if (typeof item === "object" && item !== null) {
@@ -69,7 +69,7 @@ function processItems(obj: any, oldPath: string, newPath: string) {
         obj[key] = processItems(obj, oldPath, newPath);
       }
     } else {
-      item.path = item.path.replace(oldPath, newPath).replace(".", ",");
+      item.path = item.path.replace(oldPath, newPath).split(".").join(",");
       // Update path for files
       //item.path = `${basePath}${item.name}`;
       // Perform actions for files (replace with your logic)
@@ -95,7 +95,7 @@ function recreateWithNewNameInDB(
   //for realtime database
 
   var pathToNewElement =
-    "users/" + uid + path.replace(originalName, newName).replace(".", ",");
+    "users/" + uid + path.replace(originalName, newName).split(".").join(",");
 
   var pathToNewElement__ = path.replace(originalName, newName);
 
@@ -110,7 +110,7 @@ function recreateWithNewNameInDB(
 
     //console.log(tempData)
 
-    tempData = tempData.split(path).join(path.replaceAll(originalName, newName));
+    tempData = tempData.split(path).join(path.split(originalName).join(newName));
 
     //console.log("/////")
 

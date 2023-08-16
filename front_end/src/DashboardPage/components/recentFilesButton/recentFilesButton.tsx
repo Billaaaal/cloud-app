@@ -20,21 +20,21 @@ const RecentFilesButton = (props: any) => {
       break;
     case 'docx':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#656be0;';
+      fileTypeIconTextBg = '#fff;';
       break;
     case 'jpg':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#656be0;';
+      fileTypeIconTextBg = '#fff;';
 
       break;
     case 'jpeg':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#656be0;';
+      fileTypeIconTextBg = '#fff;';
 
       break;
     case 'png':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#656be0;';
+      fileTypeIconTextBg = '#fff;';
 
       break;
     case 'gif':

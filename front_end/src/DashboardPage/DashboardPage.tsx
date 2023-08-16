@@ -9,6 +9,7 @@ import SideButtonsList from './SideButtonsList';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import RecentFilesButton from './components/recentFilesButton/recentFilesButton';
 import ElementButton from './components/elementButton/elementButton';
+import { saveAs } from 'file-saver';
 //import folderIcon from './assets/folder.svg'
 //import { Dropdown, Menu } from 'antd';
 //import type { MenuProps } from 'antd';
@@ -25,6 +26,7 @@ import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import RenameModal from './components/renameModal/renameModal';
 import addIcon from './assets/addIcon.svg';
 import NewFolderModal from './components/newFolderModal/newFolderModal';
+import {createWriteStream} from 'streamsaver'
 import {
   child,
   equalTo,
@@ -260,7 +262,6 @@ function App() {
       onValue(queryRef, snapshot => {
         //      console.log("There have been changes inside " + "users/" + auth.currentUser?.uid + currentPath)
 
-        
         if (snapshot.exists()) {
           const data = snapshot.val();
           console.log("Tell the data i'm coming");
@@ -544,7 +545,49 @@ function App() {
   function downloadItem(item: any) {
     //setModalTextInputDefaultValue(item.elementName)
 
-    console.log(`Downloading ${item.type} ${item.elementName}...`);
+    //console.log(`Downloading ${item.type} ${item.elementName}...`);
+
+    fetch('http://localhost:5000/api/download', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${currentIdToken}`,
+        'Content-Type': 'application/json',
+        path: item.path,
+        type: item.type,
+        name: item.name,
+      },
+    }).then(response => {
+      const fileStream = createWriteStream(
+        item.type === 'folder' ? item.name + '.zip' : item.name + '.zip',
+        { size: 16 * 1000000 },
+      );
+
+      const readableStream = response.body;
+
+      // more optimized
+      if (window.WritableStream && readableStream?.pipeTo) {
+        return readableStream
+          .pipeTo(fileStream)
+          .then(() => console.log('done writing'));
+      }
+
+      const writer = fileStream.getWriter();
+
+
+     // window.writer = getWriter();
+
+      const reader = response.body?.getReader();
+      function pump() {
+        reader!
+          .read()
+          .then(res =>
+            res.done ? writer.close() : writer.write(res.value).then(pump),
+          );
+      }
+
+      pump();
+    });
   }
 
   function openRenameModal(item: any) {
@@ -640,7 +683,6 @@ function App() {
       }), // body data type must match "Content-Type" header
     })
       .then(response => {
-
         if (response.status === 200) {
         } else {
         }

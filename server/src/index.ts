@@ -11,6 +11,7 @@ import upload from "./routes/upload/upload";
 import newfolder from "./routes/newfolder/newfolder";
 import rename from "./routes/rename/rename";
 import Delete from "./routes/delete/Delete";
+import download from "./routes/download/download";
 var serviceAccount = require("./credentials.json");
 
 //
@@ -31,9 +32,6 @@ const port = 5000;
 
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("Hello world !");
-});
 
 app.use("/api/create-user", createuser);
 
@@ -45,6 +43,10 @@ app.use("/api/rename", rename);
 
 
 app.use("/api/delete", Delete);
+
+
+app.use("/api/download", download);
+
 
 //app.use(middleware.decodeToken)
 
