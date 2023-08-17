@@ -59,5 +59,5 @@ app.use("/api/download", download);
 //app.get("/api/deletefile")
 
 app.listen(port, () => {
-  //console.log(`server is listening on ${port}`);
+  console.log(`server is listening on ${port}`);
 });

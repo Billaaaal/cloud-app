@@ -32,7 +32,7 @@ function createFolderInDB(uid: string, path: string, folderName: string) {
 
             //console.log("Creating folder in DB...");
 
-            db.ref(dbRef)
+            db.ref(dbRef.split(".").join(","))
               .update({
                 date: Date.now(),
                 name: folderName,
@@ -54,7 +54,7 @@ function createFolderInDB(uid: string, path: string, folderName: string) {
 
         //console.log("Creating folder in DB...");
 
-        db.ref(dbRef)
+        db.ref(dbRef.split(".").join(","))
           .update({
             date: Date.now(),
             name: folderName,

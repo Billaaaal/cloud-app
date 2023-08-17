@@ -285,3 +285,39 @@ body,
     margin-right: 10px;
   }
 }
+
+@media screen and (max-width: 750px) {
+  .logo {
+    height: auto;
+    width: 100px;
+  }
+  .subContainer{
+    gap: 20px;
+  }
+
+  .navButtons :not(:nth-last-child(-n+2)) {
+    display: none;
+  }
+}
+@media screen and (max-width: 550px) {
+
+  .signInContainer{
+    width: 100%;
+    align-items: center;
+    
+  }
+  .mainContainer{
+    flex-direction: column-reverse;
+    gap:50px;
+  }
+  .textInputField{
+    width: 100%;
+  }
+
+
+  .subContainer{
+    flex-direction: column;
+    align-items: center;
+  }
+
+}

@@ -53,7 +53,7 @@ const DragDropSuccessfullAnimation = (props: any) => {
                     0 0 78.3531,50 28.35355,28.353548 0 0 0 49.99955,21.646452
                     Z"
       />
-      <g className={styles.cut} clip-path="url(#clipIt)">
+      <g className={styles.cut} clipPath="url(#clipIt)">
         <circle
           r="35"
           cy="50"

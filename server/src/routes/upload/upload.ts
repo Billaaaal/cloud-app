@@ -20,7 +20,10 @@ function writeFileToDisk(
 
   //mkdirSync("files_folder/" + uid + filePath, { recursive: true })
   try {
-    writeFileSync("files_folder/" + uid + filePath + '/' + fileName, fileBuffer);
+    writeFileSync(
+      "files_folder/" + uid + filePath + "/" + fileName,
+      fileBuffer
+    );
   } catch (e) {
     //console.log("Error");
     //console.log;
@@ -28,8 +31,6 @@ function writeFileToDisk(
 
   //match error
 }
-
-
 
 function convertSize(sizeToConvert: number) {
   var units = ["B", "KB", "MB", "GB", "TB"],
@@ -74,7 +75,7 @@ function createFileRecordInDB(
           .update({
             date: Date.now(),
             name: fileName,
-            size: convertSize(fileBuffer.length),
+            size: fileBuffer.length,
             path: filePath + "/" + fileName,
             type: fileName.split(".").pop(),
           })

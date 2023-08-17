@@ -63,14 +63,14 @@ function App() {
 
         const currentTimestamp = Date.now() / 1000;
 
-        console.log(
-          user.metadata.creationTime + ' ' + (currentTimestamp - dateObject),
-        );
+        //console.log(
+        //  user.metadata.creationTime + ' ' + (currentTimestamp - dateObject),
+        //);
 
         if (Math.round(currentTimestamp - dateObject) < 10) {
-          console.log("Condition met: you've just sign up");
+          //console.log("Condition met: you've just sign up");
         } else {
-          console.log("Condition met : you're about to go to dashboard");
+          //console.log("Condition met : you're about to go to dashboard");
 
           navigate('/dashboard/');
         }
@@ -200,7 +200,7 @@ function App() {
           //make an api call to the backend to create a user in the database and also the files folder
           //alert("Token: " + idToken);
 
-          console.log(userCredential.user);
+          //console.log(userCredential.user);
           //});
 
           // Sign up successful, do something if needed

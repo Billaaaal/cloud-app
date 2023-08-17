@@ -20,21 +20,21 @@ const RecentFilesButton = (props: any) => {
       break;
     case 'docx':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#fff;';
+      fileTypeIconTextBg = '#fff';
       break;
     case 'jpg':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#fff;';
+      fileTypeIconTextBg = '#fff';
 
       break;
     case 'jpeg':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#fff;';
+      fileTypeIconTextBg = '#fff';
 
       break;
     case 'png':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#fff;';
+      fileTypeIconTextBg = '#fff';
 
       break;
     case 'gif':
@@ -53,7 +53,7 @@ const RecentFilesButton = (props: any) => {
       break;
     default:
       fileTypeIcongBg = '#f8e3ff';
-      fileTypeIconTextBg = '#c66fe5';
+      fileTypeIconTextBg = '#fff';
 
       break;
   }
@@ -78,7 +78,7 @@ const RecentFilesButton = (props: any) => {
               color: fileTypeIconTextBg,
             }}
           >
-            {item.type.toUpperCase()}
+            {item.type.toUpperCase().slice(0, 9)}
           </div>
 
           <h1 className={styles.fileNameText}>{item.elementName}</h1>

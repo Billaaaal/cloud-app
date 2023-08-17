@@ -11,6 +11,7 @@ body,
   width: 100%;
   overflow-x: hidden;
   background-color: #ffff;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .app {
@@ -865,7 +866,10 @@ body,
     */
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width:400px) {
+  .sectionTitle{
+    margin-left: 0px;
+  }
   .logOutButton {
     margin-left: 0px;
   }
@@ -880,5 +884,23 @@ body,
 
   #modal {
     width: 50%;
+  }
+  .logo{
+    height: auto;
+    width: 100px;
+  }
+  .searchBar{
+    width: 150px;
+    height: 40px;
+  }
+  .searchBarIcon{
+    width: 15px;
+    height: 15px;
+  margin-left: 15px;
+
+  }
+  .newFolder{
+    width: 40px;
+    height: 40px;
   }
 }

@@ -1,13 +1,44 @@
 //create react app
-import React from 'react';
+import React, { useEffect } from 'react';
 
 //import css
 import styles from './LandingPage.module.css';
 import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 //import components
 
 function App() {
+  const auth = getAuth();
+
+  useEffect(() => {
+    //alert("Login page has been mounted")
+
+    const unsubscribe = onAuthStateChanged(auth, user => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        //alert(uid)
+        //then navigate to the dashboard
+        // ...
+        navigate('/dashboard/');
+
+        //maybe add the same logic as in the signup page with the timestamp check
+      } else {
+        // User is signed out
+        // ...
+        //lert("You are not signed in")
+      }
+    });
+
+    return () => {
+      unsubscribe();
+
+      // Clean up side effects or subscriptions here when the component unmounts
+    };
+  }, []);
+
   const navigate = useNavigate();
 
   return (

@@ -1,15 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 //import css
 import styles from './DashboardPage.module.css';
-import search from './assets/search.svg';
-import filterIcon from './assets/filter_icon.svg';
+import searchIcon from './assets/search.svg';
+//import filterIcon from './assets/filter_icon.svg';
 import logOutIcon from './assets/logOutIcon.svg';
 import SidePannelButton from './components/sidePannelButton/sidepannelButton';
 import SideButtonsList from './SideButtonsList';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import RecentFilesButton from './components/recentFilesButton/recentFilesButton';
 import ElementButton from './components/elementButton/elementButton';
-import { saveAs } from 'file-saver';
+//import { saveAs } from 'file-saver';
 //import folderIcon from './assets/folder.svg'
 //import { Dropdown, Menu } from 'antd';
 //import type { MenuProps } from 'antd';
@@ -17,49 +17,50 @@ import Dropzone from 'react-dropzone';
 import { useState } from 'react';
 import DragDropSuccessfullAnimation from './components/dragDropSuccessfullAnimation/dragDropSuccessfullAnimation';
 import UploadedFileItem from './components/uploadedFileItem/uploadedFileItem';
-import Modal from 'react-modal';
-import { useLocation, useNavigate } from 'react-router-dom';
+//import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
 //haha
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+//import { initializeApp } from 'firebase/app';
+//import { getAnalytics } from 'firebase/analytics';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import RenameModal from './components/renameModal/renameModal';
 import addIcon from './assets/addIcon.svg';
 import NewFolderModal from './components/newFolderModal/newFolderModal';
-import {createWriteStream} from 'streamsaver'
+import { createWriteStream } from 'streamsaver';
 import {
-  child,
-  equalTo,
-  get,
+  //child,
+  //equalTo,
+  //get,
   getDatabase,
   off,
   onValue,
-  orderByChild,
+  //orderByChild,
   query,
   ref,
 } from 'firebase/database';
 import { Dropdown } from 'antd';
 import axios from 'axios';
+//import { match } from 'assert';
 
 function App() {
-  const firebaseConfig = {
-    apiKey: 'AIzaSyC0WzN8b1WZ1BKvYObM_bEOEA7h0NiHmEU',
+  //const firebaseConfig = {
+  //  apiKey: 'AIzaSyC0WzN8b1WZ1BKvYObM_bEOEA7h0NiHmEU',
 
-    authDomain: 'cloudapp-b1e10.firebaseapp.com',
+  //  authDomain: 'cloudapp-b1e10.firebaseapp.com',
 
-    databaseURL:
-      'https://cloudapp-b1e10-default-rtdb.europe-west1.firebasedatabase.app',
+  //  databaseURL:
+  //    'https://cloudapp-b1e10-default-rtdb.europe-west1.firebasedatabase.app',
 
-    projectId: 'cloudapp-b1e10',
+  //  projectId: 'cloudapp-b1e10',
 
-    storageBucket: 'cloudapp-b1e10.appspot.com',
+  //  storageBucket: 'cloudapp-b1e10.appspot.com',
 
-    messagingSenderId: '306526058417',
+  //  messagingSenderId: '306526058417',
 
-    appId: '1:306526058417:web:ca2a5ec2035ec1b6806f90',
+  //  appId: '1:306526058417:web:ca2a5ec2035ec1b6806f90',
 
-    measurementId: 'G-G600B1ZV35',
-  };
+  //  measurementId: 'G-G600B1ZV35',
+  //};
 
   //const app = initializeApp(firebaseConfig);
   //const analytics = getAnalytics(app);
@@ -78,16 +79,64 @@ function App() {
 
   const [currentUserEmail, setCurrentUserEmail] = useState<String | null>('');
 
+  const [search, setSearch] = useState('');
+
   const [renameModalIsOpen, setRenameModalIsOpen] = useState(false);
 
   const [selectedItem, setSelectedItem] = useState<any | null>('');
 
+  const [sortingCriteria, setSortingCriteria] = useState('name'); // Default sorting criteria
+  const [sortingDirection, setSortingDirection] = useState('ascending'); // Default sorting direction
+
+  const handleSort = (criteria: any) => {
+    if (criteria === sortingCriteria) {
+      // If clicking on the same criteria, toggle the sorting direction
+      setSortingDirection(
+        sortingDirection === 'ascending' ? 'descending' : 'ascending',
+      );
+    } else {
+      // If clicking on a different criteria, set to ascending by default
+      setSortingCriteria(criteria);
+      setSortingDirection('ascending');
+    }
+  };
   //console.log(location.pathname)
 
   //const [currentPath, setCurrentPath] = useState("")
 
   //console.log("The current uri is : '"+location.pathname+ "'")
 
+  function sortList(arrToSort: any) {
+    switch (sortingCriteria) {
+      case 'type':
+        return arrToSort.sort((a: any, b: any) =>
+          sortingDirection === 'ascending'
+            ? a.type.toLowerCase().localeCompare(b.type.toLowerCase())
+            : b.type.toLowerCase().localeCompare(a.type.toLowerCase()),
+        );
+
+      case 'name':
+        return arrToSort.sort((a: any, b: any) =>
+          sortingDirection === 'ascending'
+            ? a.elementName
+                .toLowerCase()
+                .localeCompare(b.elementName.toLowerCase())
+            : b.elementName
+                .toLowerCase()
+                .localeCompare(a.elementName.toLowerCase()),
+        );
+
+      case 'date':
+        return arrToSort.sort((a: any, b: any) =>
+          sortingDirection === 'ascending' ? a.date - b.date : b.date - a.date,
+        );
+
+      case 'size':
+        return arrToSort.sort((a: any, b: any) =>
+          sortingDirection === 'ascending' ? a.size - b.size : b.size - a.size,
+        );
+    }
+  }
   //useEffect(() => {
 
   //if (location.pathname === '/dashboard'){
@@ -212,8 +261,8 @@ function App() {
       navigate('/dashboard');
     }
 
-    console.log('The user is ');
-    console.log(auth.currentUser);
+    //console.log('The user is ');
+    //console.log(auth.currentUser);
 
     //var pathToListen = "users/" + auth.currentUser?.uid + decodeURI(location.pathname.replace('dashboard/My Files', '/'))
 
@@ -226,13 +275,13 @@ function App() {
       var pathToListen = 'users/' + auth.currentUser?.uid + '/My Files';
 
       //      pathToListen = "users/" + auth.currentUser?.uid + "/My Files/"
-      console.log("Condition met, you're at the root folder");
+      //console.log("Condition met, you're at the root folder");
     } else {
       var pathToListen =
         'users/' +
         auth.currentUser?.uid +
         decodeURI(location.pathname.replace('dashboard/', ''));
-      console.log("Condition not met, you're elsewhere");
+      //console.log("Condition not met, you're elsewhere");
     }
 
     const db = getDatabase();
@@ -241,7 +290,7 @@ function App() {
 
     const queryRef = query(tasksRef);
 
-    console.log("Let's listen to " + pathToListen);
+    //console.log("Let's listen to " + pathToListen);
 
     if (auth.currentUser) {
       //    console.log("Listening to " + pathToListen)
@@ -264,8 +313,8 @@ function App() {
 
         if (snapshot.exists()) {
           const data = snapshot.val();
-          console.log("Tell the data i'm coming");
-          console.log(data);
+          //console.log("Tell the data i'm coming");
+          //console.log(data);
 
           setAllItemsList([]);
           for (const key in data) {
@@ -349,8 +398,8 @@ function App() {
         const item = obj[key];
 
         if (item.type && item.type !== 'folder') {
-          console.log("here's a file");
-          console.log(item);
+          //console.log("here's a file");
+          //console.log(item);
 
           const name = item.name;
           const date = item.date;
@@ -488,64 +537,14 @@ function App() {
 
   //const recentFilesList = [{elementName: "revenues.jpg", type: "jpg"},{elementName: "revenues.pdf", type: "pdf"},{elementName: "revenues.jpg", type: "jpg"},{elementName: "revenues.pdf", type: "pdf"},{elementName: "revenues.jpg", type: "jpg"},{elementName: "revenues.pdf", type: "pdf"},{elementName: "revenues.jpg", type: "jpg"},{elementName: "revenues.pdf", type: "pdf"},{elementName: "revenues.jpg", type: "jpg"},{elementName: "revenues.pdf", type: "pdf"},];
 
-  const elementsList = [
-    {
-      elementName: 'a folder',
-      type: 'folder',
-      size: '28 KB',
-      date: 'time-stamp',
-    },
-    {
-      elementName: 'another one',
-      type: 'folder',
-      size: '28 KB',
-      date: 'time-stamp',
-    },
-    { elementName: 'lol', type: 'folder', size: '28 KB', date: 'time-stamp' },
-    {
-      elementName: 'revenues_folder',
-      type: 'folder',
-      size: '28 KB',
-      date: 'time-stamp',
-    },
-    {
-      elementName: 'revenues_folder',
-      type: 'folder',
-      size: '28 KB',
-      date: 'time-stamp',
-    },
-    {
-      elementName: 'revenues_folder',
-      type: 'folder',
-      size: '28 KB',
-      date: 'time-stamp',
-    },
-    {
-      elementName: 'revenues_folder',
-      type: 'folder',
-      size: '28 KB',
-      date: 'time-stamp',
-    },
-    {
-      elementName: 'document.docx',
-      type: 'docx',
-      size: '54 KB',
-      date: 'time-stamp',
-    },
-    {
-      elementName: 'image.jpg',
-      type: 'jpg',
-      size: '136 KB',
-      date: 'time-stamp',
-    },
-  ];
-
   const uploadedFilesContainerRef = useRef<any | HTMLElement>(null);
 
   function downloadItem(item: any) {
     //setModalTextInputDefaultValue(item.elementName)
 
     //console.log(`Downloading ${item.type} ${item.elementName}...`);
+
+    //alert(item.elementName)
 
     fetch('http://localhost:5000/api/download', {
       method: 'GET',
@@ -555,27 +554,28 @@ function App() {
         'Content-Type': 'application/json',
         path: item.path,
         type: item.type,
-        name: item.name,
+        name: item.elementName,
       },
     }).then(response => {
+      //do not check for response.status because that interferes with the download
       const fileStream = createWriteStream(
-        item.type === 'folder' ? item.name + '.zip' : item.name + '.zip',
-        { size: 16 * 1000000 },
+        item.type === 'folder' ? item.elementName + '.zip' : item.elementName,
+        { size: Number(response.headers.get('Content-Length')) },
       );
 
       const readableStream = response.body;
 
       // more optimized
       if (window.WritableStream && readableStream?.pipeTo) {
-        return readableStream
-          .pipeTo(fileStream)
-          .then(() => console.log('done writing'));
+        return readableStream.pipeTo(fileStream).then(
+          () => {},
+          //console.log('done writing')
+        );
       }
 
       const writer = fileStream.getWriter();
 
-
-     // window.writer = getWriter();
+      // window.writer = getWriter();
 
       const reader = response.body?.getReader();
       function pump() {
@@ -618,6 +618,7 @@ function App() {
 
         if (response.status === 200) {
         } else {
+          alert('Error renaming file');
         }
 
         //response.json()
@@ -631,40 +632,45 @@ function App() {
   }
 
   function createNewFolder(folderName: String) {
-    console.log(
-      'Creating new folder named ' +
-        folderName +
-        ' in ' +
-        extractFromMyFiles(decodeURI(location.pathname)),
-    );
-
-    fetch('http://localhost:5000/api/new-folder', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${currentIdToken}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        folderName: folderName,
-        path: extractFromMyFiles(decodeURI(location.pathname)),
-      }), // body data type must match "Content-Type" header
-    })
-      .then(response => {
-        setNewFolderModalIsOpen(false);
-
-        if (response.status === 200) {
-        } else {
-        }
-
-        //response.json()
+    //console.log(
+    //  'Creating new folder named ' +
+    //  folderName +
+    //  ' in ' +
+    // extractFromMyFiles(decodeURI(location.pathname)),
+    //);
+    if (!folderName.includes('/')) {
+      fetch('http://localhost:5000/api/new-folder', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${currentIdToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          folderName: folderName,
+          path: extractFromMyFiles(decodeURI(location.pathname)),
+        }), // body data type must match "Content-Type" header
       })
-      .then(data => {
-        //console.log('Upload success:', data);
-      })
-      .catch(error => {
-        //console.error('Upload error:', error);
-      });
+        .then(response => {
+          setNewFolderModalIsOpen(false);
+
+          if (response.status === 200) {
+          } else {
+            alert('Error creating folder');
+          }
+
+          //response.json()
+        })
+        .then(data => {
+          //console.log('Upload success:', data);
+        })
+        .catch(error => {
+          //console.error('Upload error:', error);
+        });
+    } else {
+      //maybe remove this alert
+      alert("Folder name can't contain '/'");
+    }
   }
 
   function deleteItem(item: any) {
@@ -685,6 +691,7 @@ function App() {
       .then(response => {
         if (response.status === 200) {
         } else {
+          alert('Error while deleting file');
         }
 
         //response.json()
@@ -773,15 +780,15 @@ function App() {
 
   //console.log(allItemsList)
 
-  function openModal() {
-    setRenameModalIsOpen(true);
-  }
+  //function openModal() {
+  //  setRenameModalIsOpen(true);
+  //}
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
+  //function afterOpenModal() {
+  //  // references are now sync'd and can be accessed.
+  //}
 
-  function closeModal() {}
+  //function closeModal() {}
 
   function uploadFiles(files: File[]) {
     //console.log(files)
@@ -803,7 +810,7 @@ function App() {
 
       formData.append('path', extractFromMyFiles(decodeURI(location.pathname)));
 
-      console.log('Uploading ' + files[i].name + '...');
+      //console.log('Uploading ' + files[i].name + '...');
 
       formData.append('files', files[i]);
 
@@ -829,7 +836,7 @@ function App() {
           data: formData,
 
           onUploadProgress: p => {
-            console.log('it is progressing... ' + p.loaded / p.total!);
+            //console.log('it is progressing... ' + p.loaded / p.total!);
             //var arr = arr.filter(file_ => file_.name != files[i].name);
             //const index = arr.findIndex(e => e.name === files[i].name);
             //if (index === -1) {
@@ -906,6 +913,7 @@ function App() {
         .then(response => {
           if (response.status === 200) {
           } else {
+            alert('Error uploading file');
           }
 
           if (i === files.length - 1) {
@@ -970,8 +978,9 @@ function App() {
           <span key={index} className={styles.sectionTitle}>
             {index !== 0 && <span className={styles.sectionTitle}>/</span>}
             <a
-              href="javascript:;"
-              onClick={() => {
+              href=""
+              onClick={e => {
+                e.preventDefault();
                 navigate(
                   '/dashboard/' + segments.slice(0, index + 1).join('/'),
                 );
@@ -1013,13 +1022,16 @@ function App() {
         ></img>
 
         <div className={styles.searchBar}>
-          <img className={styles.searchBarIcon} src={search}></img>
+          <img className={styles.searchBarIcon} src={searchIcon}></img>
 
           <input
             className={styles.searchBarInput}
             type="text"
             placeholder="Search Files..."
             name="search"
+            onChange={e => {
+              setSearch(e.target.value);
+            }}
           ></input>
         </div>
 
@@ -1060,7 +1072,7 @@ function App() {
       <div className={styles.sidePannel}>
         <div className={styles.sidePannelButtonsContainer}>
           {SideButtonsList.map((item, index) => (
-            <SidePannelButton itemObject={item} />
+            <SidePannelButton itemObject={item} key={index} />
           ))}
         </div>
 
@@ -1112,6 +1124,7 @@ function App() {
                   <RecentFilesButton
                     itemObject={item}
                     dropDownMenuOptions={dropDownMenuOptions}
+                    key={index}
                   />
                 ))}
             </div>
@@ -1131,29 +1144,82 @@ function App() {
 
               <div id={styles.allFilesSortContainer}>
                 <div style={{ flexBasis: '' }}>
-                  <button className={styles.sortItem}>Type</button>
+                  <button
+                    className={styles.sortItem}
+                    onClick={() => {
+                      handleSort('type');
+                    }}
+                  >
+                    {sortingCriteria === 'type'
+                      ? sortingDirection === 'ascending'
+                        ? 'Type ↑'
+                        : 'Type ↓'
+                      : 'Type'}
+                  </button>
                 </div>
 
                 <div style={{ flexBasis: 'calc(34% - 0px)' }}>
-                  <button className={styles.sortItem}>Name</button>
+                  <button
+                    className={styles.sortItem}
+                    onClick={() => {
+                      handleSort('name');
+                    }}
+                  >
+                    {sortingCriteria === 'name'
+                      ? sortingDirection === 'ascending'
+                        ? 'Name ↑'
+                        : 'Name ↓'
+                      : 'Name'}
+                  </button>
                 </div>
 
                 <div style={{ flexBasis: 'calc(28%)' }}>
-                  <button className={styles.sortItem}>Date created</button>
+                  <button
+                    className={styles.sortItem}
+                    onClick={() => {
+                      handleSort('date');
+                    }}
+                  >
+                    {sortingCriteria === 'date'
+                      ? sortingDirection === 'ascending'
+                        ? 'Date ↑'
+                        : 'Date ↓'
+                      : 'Date'}
+                  </button>
                 </div>
 
                 <div style={{ flexBasis: 'calc(20%)' }}>
-                  <button className={styles.sortItem}>Size</button>
+                  <button
+                    className={styles.sortItem}
+                    onClick={() => {
+                      handleSort('size');
+                    }}
+                  >
+                    {sortingCriteria === 'size'
+                      ? sortingDirection === 'ascending'
+                        ? 'Size ↑'
+                        : 'Size ↓'
+                      : 'Size'}
+                  </button>
                 </div>
               </div>
 
               <div id={styles.allFilesSubContainer}>
-                {allItemsList.map((item, index) => (
-                  <ElementButton
-                    itemObject={item}
-                    dropDownMenuOptions={dropDownMenuOptions}
-                  />
-                ))}
+                {sortList(allItemsList)
+                  .filter((item: any) => {
+                    return search.toLowerCase() === ''
+                      ? item
+                      : item.elementName
+                          .toLowerCase()
+                          .includes(search.toLowerCase());
+                  })
+                  .map((item: any, index: any) => (
+                    <ElementButton
+                      itemObject={item}
+                      dropDownMenuOptions={dropDownMenuOptions}
+                      key={index}
+                    />
+                  ))}
 
                 <Dropdown
                   trigger={['contextMenu']}
@@ -1168,7 +1234,10 @@ function App() {
 
             <div className={styles.dragDropContainer}>
               <Dropzone
-                onDrop={acceptedFiles => console.log(acceptedFiles)}
+                onDrop={
+                  acceptedFiles => {}
+                  //  console.log(acceptedFiles)
+                }
                 onDragOver={() => {
                   setDragDropSurfaceState('isDraggedOver');
                 }}
@@ -1226,7 +1295,7 @@ function App() {
                 ref={uploadedFilesContainerRef}
               >
                 {listOfUploaded.reverse().map((file, index) => (
-                  <UploadedFileItem object={file} />
+                  <UploadedFileItem object={file} key={index} />
                 ))}
               </div>
             </div>

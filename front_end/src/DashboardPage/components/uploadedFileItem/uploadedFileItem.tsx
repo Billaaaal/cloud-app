@@ -70,7 +70,7 @@ const UploadedFileItem = (props: any) => {
 
   const progress = file.progress;
 
-  console.log('Logging progress from the item itself' + progress);
+  //console.log('Logging progress from the item itself' + progress);
 
   //const [progress, setProgress] = useState(0);
 

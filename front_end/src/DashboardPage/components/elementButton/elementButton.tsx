@@ -3,7 +3,7 @@ import styles from './elementButton.module.css';
 import folderIcon from '../../assets/documents.svg';
 import { Dropdown, Menu } from 'antd';
 import { useNavigate } from 'react-router-dom';
-
+import convertSize from '../../methods/convertSize';
 //const SidePannelButton = (props: { icon:String ; text: String; }) => {
 
 const ElementButton = (props: any) => {
@@ -31,21 +31,21 @@ const ElementButton = (props: any) => {
       break;
     case 'docx':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#fff;';
+      fileTypeIconTextBg = '#fff';
       break;
     case 'jpg':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#fff;';
+      fileTypeIconTextBg = '#fff';
 
       break;
     case 'jpeg':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#fff;';
+      fileTypeIconTextBg = '#fff';
 
       break;
     case 'png':
       fileTypeIcongBg = '#fca7a7';
-      fileTypeIconTextBg = '#fff;';
+      fileTypeIconTextBg = '#fff';
 
       break;
     case 'gif':
@@ -64,14 +64,17 @@ const ElementButton = (props: any) => {
       break;
     default:
       fileTypeIcongBg = '#f8e3ff';
-      fileTypeIconTextBg = '#c66fe5';
+      fileTypeIconTextBg = '#fff';
 
       break;
   }
 
   const dt_object = new Date(item.date);
-  const options = { month: 'long', day: 'numeric' };
-  const formatted_date = dt_object.toLocaleDateString('en-US', options);
+
+  const formatted_date = dt_object
+    .toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    .split(' ')
+    .join(', ');
 
   return (
     <Dropdown
@@ -85,8 +88,8 @@ const ElementButton = (props: any) => {
         onClick={
           isAFile
             ? () => {
-                console.log('Clicked on ' + item.elementName);
-              }
+              // console.log('Clicked on ' + item.elementName);
+            }
             : () => {
                 navigate('/dashboard' + path);
               }
@@ -107,8 +110,18 @@ const ElementButton = (props: any) => {
         )}
 
         <h1 className={styles.elementName}>{item.elementName}</h1>
-        <h1 className={styles.date}>{formatted_date}</h1>
-        <h1 className={styles.size}>{item.size}</h1>
+        <h1
+          className={styles.date}
+          title={dt_object.toLocaleDateString('en-US', {
+            month: 'short',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+          })}
+        >
+          {formatted_date}
+        </h1>
+        <h1 className={styles.size}>{isAFile ? convertSize(item.size) : ""}</h1>
       </div>
     </Dropdown>
   );

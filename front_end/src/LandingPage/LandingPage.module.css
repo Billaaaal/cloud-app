@@ -91,6 +91,7 @@ body,
   display: flex;
   height: 100%;
   width: 49%;
+  object-fit: cover;
 }
 
 .title {
@@ -125,6 +126,17 @@ body,
 
 .mainButton:hover {
   background-color: #32acfd;
+}
+
+@media screen and (max-width: 750px) {
+  .logo {
+    height: auto;
+    width: 100px;
+  }
+
+  .navButtons :not(:nth-last-child(-n+2)) {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 880px) {

@@ -7,7 +7,8 @@ import {
   mkdirSync,
   existsSync,
   renameSync,
-  createReadStream
+  createReadStream,
+  statSync,
 } from "fs";
 import { zip } from "zip-a-folder";
 import crypto from "crypto";
@@ -25,9 +26,11 @@ router.get("/", (req, res) => {
 
   const type = req.headers.type;
 
-  var name = req.headers.name;
+  const elementName = req.headers.name;
 
-  console.log("Let's download a file...");
+  console.log("Received download request");
+
+  //console.log(req.headers);
 
   if (!idToken) {
     res.status(400).json({ message: `Error` }).send();
@@ -39,6 +42,7 @@ router.get("/", (req, res) => {
       .verifyIdToken(idToken)
       .then((decodedToken) => {
         const uid = decodedToken.uid;
+        console.log("Token verified successfully");
 
         if (type === "folder") {
           if (!existsSync("./temp")) {
@@ -51,7 +55,22 @@ router.get("/", (req, res) => {
             //res.download(tempPath, () => {
             //  rmSync(tempPath);
             //});
+            console.log("ZIP written successfully");
+
             const stream = createReadStream(tempPath);
+
+            stream.on("start", () => {
+              console.log("Started downloading file...");
+            });
+
+            stream.on("error", (err) => {
+              console.log(err);
+            });
+
+            stream.on("end", () => {
+              console.log("Downloaded file !");
+              rmSync(tempPath);
+            });
 
             //res.setHeader("Content-Type", "application/pdf");
             //res.setHeader("Content-Disposition", 'inline; filename="js.pdf"');
@@ -59,27 +78,51 @@ router.get("/", (req, res) => {
             res.setHeader("Content-Type", "application/zip");
             res.setHeader(
               "Content-Disposition",
-              `inline; filename="${name}.zip}"`
+              `inline; filename="${elementName}.zip}"`
             );
+            res.setHeader("Content-Length", statSync(tempPath).size);
 
+            //DELETE TEMP FILE UNLINK OR RM
 
             stream.pipe(res);
           });
         } else {
-
           const stream = createReadStream("./files_folder/" + uid + path);
+
+          //console.log("./files_folder/" + uid + path)
+          //console.log("Content-Type" + ` application/${type}`);
+          //console.log(
+          //  "Content-Disposition" + ` inline; filename="${elementName}"`
+          //);
 
           //res.setHeader("Content-Type", "application/pdf");
           //res.setHeader("Content-Disposition", 'inline; filename="js.pdf"');
 
-          res.setHeader("Content-Type", "application/zip"); /////////////
+          res.setHeader("Content-Type", `application/${type}`); /////////////
           res.setHeader(
             "Content-Disposition",
-            `inline; filename="${name}"`
+            `inline; filename="${elementName}"`
           );
 
+          res.setHeader(
+            "Content-Length",
+            statSync("./files_folder/" + uid + path).size
+          );
+
+          stream.on("start", () => {
+            //console.log("Started downloading file...");
+          });
+
+          stream.on("error", (err) => {
+            //console.log(err);
+          });
+
+          stream.on("end", () => {
+            //console.log("Downloaded file !");
+          });
+
           stream.pipe(res);
-         
+
           //console.log("Downloading file..." + "./files_folder/" + uid + path);
           //res.download("./files_folder/" + uid + path);
         }
@@ -107,3 +150,24 @@ router.get("/", (req, res) => {
 });
 
 export default router;
+
+//
+//const tempPath =
+//        "./temp/" + crypto.randomBytes(4).readUInt32LE(0) + ".zip";
+
+//const stream = createWriteStream(tempPath);
+
+//zip("./files_folder/" + uid + path, undefined, {
+//  customWriteStream: stream,
+//}).then(() => {
+//console.log("Wrote to zip file");
+//res.setHeader("Content-Type", "application/zip");
+//res.setHeader(
+//  "Content-Disposition",
+//  `inline; filename="${elementName}.zip}"`
+//);
+
+//const readStream = createReadStream(tempPath);
+
+//DELETE TEMP FILE UNLINK OR RM
+//readStream.pipe(res);
