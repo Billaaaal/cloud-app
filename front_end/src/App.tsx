@@ -1,13 +1,13 @@
-import React from 'react';
+//import React from 'react';
 import {
-  BrowserRouter as Router,
+  //BrowserRouter as Router,
   Routes,
   Route,
-  Link,
-  BrowserRouter,
-  useLocation,
+  //Link,
+  //BrowserRouter,
+  //useLocation,
 } from 'react-router-dom';
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import LandingPage from './LandingPage/LandingPage';
 import LoginPage from './LoginPage/LoginPage';
@@ -36,7 +36,7 @@ const firebaseConfig = {
   measurementId: 'G-G600B1ZV35',
 };
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 //comment inside tsx file
 

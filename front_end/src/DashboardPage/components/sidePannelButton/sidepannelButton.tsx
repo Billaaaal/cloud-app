@@ -1,12 +1,12 @@
-import React from 'react';
+//import React from 'react';
 import styles from './sidePannelButton.module.css';
-import Share from './Share.png';
+//import Share from './Share.png';
 
 //const SidePannelButton = (props: { icon:String ; text: String; }) => {
 
 const SidePannelButton = (props: any) => {
-  var bg: string;
-  var bgHover: string;
+  //var bg: string;
+  //var bgHover: string;
   var buttonStyle: any;
 
   var item = props.itemObject;
@@ -14,13 +14,13 @@ const SidePannelButton = (props: any) => {
   if (item.title === 'Dashboard') {
     buttonStyle = styles.sidePannelFirstButton;
 
-    bg = '#51459E';
-    bgHover = '#3D347F';
+    //bg = '#51459E';
+    //bgHover = '#3D347F';
   } else {
     buttonStyle = styles.sidePannelButton;
 
-    bg = '#ECEFF7';
-    bgHover = '#c1d2ff';
+    //bg = '#ECEFF7';
+    //bgHover = '#c1d2ff';
   }
 
   return (

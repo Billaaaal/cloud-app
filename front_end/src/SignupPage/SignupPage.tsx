@@ -1,24 +1,30 @@
 //create react app
-import React, { useEffect, useState } from 'react';
+import {
+  //React,
+  useEffect,
+  useState,
+} from 'react';
 
 //import css
 import styles from './SignupPage.module.css';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { Link,
+  // Navigate,
+   useNavigate } from 'react-router-dom';
 
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+//import { initializeApp } from 'firebase/app';
+//import { getAnalytics } from 'firebase/analytics';
 import {
   getAuth,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
-  setPersistence,
-  getIdToken,
-  deleteUser,
+  //setPersistence,
+  //getIdToken,
+  //deleteUser,
 } from 'firebase/auth';
-import { create } from 'domain';
-import { sign } from 'crypto';
+//import { create } from 'domain';
+//import { sign } from 'crypto';
 import handleErrorCode from '../methods/handleErrorCode';
-import { unsubscribe } from 'diagnostics_channel';
+//import { unsubscribe } from 'diagnostics_channel';
 
 //import components
 
@@ -27,20 +33,20 @@ function App() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isAuth, setIsAuth] = useState(false);
-  const [token, setToken] = useState('');
+  //const [isAuth, setIsAuth] = useState(false);
+  //const [token, setToken] = useState('');
   const [signupErrorMessage, setSignupErrorMessage] = useState('');
   const [isSignupLoading, setIsSignupLoading] = useState(false);
 
-  const firebaseConfig = {
-    apiKey: 'AIzaSyC0WzN8b1WZ1BKvYObM_bEOEA7h0NiHmEU',
-    authDomain: 'cloudapp-b1e10.firebaseapp.com',
-    projectId: 'cloudapp-b1e10',
-    storageBucket: 'cloudapp-b1e10.appspot.com',
-    messagingSenderId: '306526058417',
-    appId: '1:306526058417:web:ca2a5ec2035ec1b6806f90',
-    measurementId: 'G-G600B1ZV35',
-  };
+  //const firebaseConfig = {
+  //  apiKey: 'AIzaSyC0WzN8b1WZ1BKvYObM_bEOEA7h0NiHmEU',
+  //  authDomain: 'cloudapp-b1e10.firebaseapp.com',
+  //  projectId: 'cloudapp-b1e10',
+  //  storageBucket: 'cloudapp-b1e10.appspot.com',
+  //  messagingSenderId: '306526058417',
+  //  appId: '1:306526058417:web:ca2a5ec2035ec1b6806f90',
+  //  measurementId: 'G-G600B1ZV35',
+  //};
 
   //const app = initializeApp(firebaseConfig);
   //const analytics = getAnalytics(app);
@@ -51,7 +57,7 @@ function App() {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
+        //const uid = user.uid;
         //alert(uid)
         //then navigate to the dashboard
         // ...
@@ -97,7 +103,7 @@ function App() {
     const signal = controller.signal;
 
     fetch(
-      'http://localhost:5000/api/create-user',
+      'https://shark-app-wcvuc.ondigitalocean.app/api/create-user',
 
       {
         signal,
@@ -128,20 +134,8 @@ function App() {
         }
         return response.json(); // Parse the response body as JSON
       })
-      .then(data => {
-        //alert(data);
-        // console.log(data.message)
-        //console.log(data)
-        // Do something with the response data here
-      })
-      .catch(error => {
-        //alert("Error")
-
-        setSignupErrorMessage('Server error');
-        setIsSignupLoading(false);
-
-        user.delete().then(() => {});
-      });
+      .then()
+      .catch();
 
     setTimeout(() => controller.abort(), 6000);
   }
@@ -164,7 +158,7 @@ function App() {
         .then(userCredential => {
           const user = userCredential.user;
 
-          const uid = user.uid;
+          //const uid = user.uid;
 
           user
             .getIdToken(/* forceRefresh */ true)
@@ -175,9 +169,7 @@ function App() {
 
               createUserInDB(idToken, user);
             })
-            .catch(function (error) {
-              // Handle error
-            });
+            .catch();
 
           //createUserInDB()
 

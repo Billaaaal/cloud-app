@@ -1,4 +1,9 @@
-import React, { memo, useEffect, useState } from 'react';
+import {
+  //React,
+  //memo,
+  useEffect,
+  useState,
+} from 'react';
 import styles from './renameModal.module.css';
 import Modal from 'react-modal';
 

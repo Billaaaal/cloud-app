@@ -1,7 +1,12 @@
-import React, { memo, useEffect, useState } from 'react';
+import {
+  //React,
+  //memo,
+  useEffect,
+  useState,
+} from 'react';
 import styles from './newFolderModal.module.css';
 import Modal from 'react-modal';
-import { create } from 'domain';
+//import { create } from 'domain';
 
 const NewFolderModal = (props: any) => {
   //alert(props.modalTextInputDefaultValue)
@@ -14,7 +19,7 @@ const NewFolderModal = (props: any) => {
     setFolderNameInputText('');
   }, [props.newFolderModalIsOpen]);
 
-  const currentPath = props.currentPath;
+  //const currentPath = props.currentPath;
 
   //const modalTextInputDefaultValueFromProps = props.modalTextInputDefaultValue
 

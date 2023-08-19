@@ -1,8 +1,11 @@
-import React from 'react';
+//import React from 'react';
 import styles from './recentFilesButton.module.css';
 //const SidePannelButton = (props: { icon:String ; text: String; }) => {
-import pdfIcon from '../../assets/pdf_icon.svg';
-import { Dropdown, Menu } from 'antd';
+//import pdfIcon from '../../assets/pdf_icon.svg';
+import {
+  Dropdown,
+  //, Menu
+} from 'antd';
 
 const RecentFilesButton = (props: any) => {
   const thumbnail =

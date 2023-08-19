@@ -203,6 +203,9 @@ function App() {
           })
           .catch(function (error) {
             // Handle error
+            if (error) {
+            }
+            
           });
 
         //alert(uid)
@@ -546,7 +549,7 @@ function App() {
 
     //alert(item.elementName)
 
-    fetch('http://localhost:5000/api/download', {
+    fetch('https://shark-app-wcvuc.ondigitalocean.app/api/download', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -600,7 +603,7 @@ function App() {
     setRenameModalIsOpen(false);
     //console.log(item)
     //console.log(`Renaming ${item.type} ${item.elementName}... to ${newName}`);
-    fetch('http://localhost:5000/api/rename', {
+    fetch('https://shark-app-wcvuc.ondigitalocean.app/api/rename', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -623,12 +626,13 @@ function App() {
 
         //response.json()
       })
-      .then(data => {
+      .then(
+        
         //console.log('Upload success:', data);
-      })
-      .catch(error => {
-        //console.error('Upload error:', error);
-      });
+      )
+      .catch(
+        
+      );
   }
 
   function createNewFolder(folderName: String) {
@@ -639,7 +643,7 @@ function App() {
     // extractFromMyFiles(decodeURI(location.pathname)),
     //);
     if (!folderName.includes('/')) {
-      fetch('http://localhost:5000/api/new-folder', {
+      fetch('https://shark-app-wcvuc.ondigitalocean.app/api/new-folder', {
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -661,12 +665,8 @@ function App() {
 
           //response.json()
         })
-        .then(data => {
-          //console.log('Upload success:', data);
-        })
-        .catch(error => {
-          //console.error('Upload error:', error);
-        });
+        .then()
+        .catch();
     } else {
       //maybe remove this alert
       alert("Folder name can't contain '/'");
@@ -677,7 +677,7 @@ function App() {
     //setModalTextInputDefaultValue(item.elementName)
     //console.log(`Deleting ${item.type} ${item.elementName}...`)
 
-    fetch('http://localhost:5000/api/delete', {
+    fetch('https://shark-app-wcvuc.ondigitalocean.app/api/delete', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -696,12 +696,8 @@ function App() {
 
         //response.json()
       })
-      .then(data => {
-        //console.log('Upload success:', data);
-      })
-      .catch(error => {
-        //console.error('Upload error:', error);
-      });
+      .then()
+      .catch();
   }
 
   const dropDownMenuOptions = (item: object) => [
@@ -827,7 +823,7 @@ function App() {
       axios
         .request({
           method: 'post',
-          url: 'http://localhost:5000/api/upload',
+          url: 'https://shark-app-wcvuc.ondigitalocean.app/api/upload',
           headers: {
             Accept: 'application/json',
             Authorization: `Bearer ${currentIdToken}`,
@@ -922,12 +918,8 @@ function App() {
 
           //response.json()
         })
-        .then(data => {
-          //console.log('Upload success:', data);
-        })
-        .catch(error => {
-          //console.error('Upload error:', error);
-        });
+        .then()
+        .catch();
     }
 
     //const startTime = new Date().getTime() / 1000;
@@ -937,7 +929,7 @@ function App() {
     //  block: 'center',
     //});
 
-    //    fetch('http://localhost:5000/api/upload', {
+    //    fetch('https://shark-app-wcvuc.ondigitalocean.app/api/upload', {
     //      method: 'POST',
     //      headers: {
     //        Accept: 'application/json',
@@ -1234,10 +1226,6 @@ function App() {
 
             <div className={styles.dragDropContainer}>
               <Dropzone
-                onDrop={
-                  acceptedFiles => {}
-                  //  console.log(acceptedFiles)
-                }
                 onDragOver={() => {
                   setDragDropSurfaceState('isDraggedOver');
                 }}

@@ -1,11 +1,11 @@
-import React from 'react';
+//import React from 'react';
 import styles from './dragDropSuccessfullAnimation.module.css';
 //const SidePannelButton = (props: { icon:String ; text: String; }) => {
 
 const DragDropSuccessfullAnimation = (props: any) => {
   var utvecklingAnimateStyle: any;
   var pilAnimateStyle: any;
-  var bockStyle: any;
+  //var bockStyle: any;
 
   var fillIconColor = '#1939ff';
 
@@ -13,7 +13,7 @@ const DragDropSuccessfullAnimation = (props: any) => {
     case 'isDraggedOver':
       utvecklingAnimateStyle = null;
       pilAnimateStyle = null;
-      bockStyle = styles.bockNotAnimate;
+    //  bockStyle = styles.bockNotAnimate;
 
       fillIconColor = '#22c733';
 
@@ -22,7 +22,7 @@ const DragDropSuccessfullAnimation = (props: any) => {
     case 'isNotDraggedOver':
       utvecklingAnimateStyle = null;
       pilAnimateStyle = null;
-      bockStyle = styles.bockNotAnimate;
+      //bockStyle = styles.bockNotAnimate;
 
       fillIconColor = '#1939ff';
 
@@ -31,7 +31,7 @@ const DragDropSuccessfullAnimation = (props: any) => {
     case 'isDropAccepted':
       utvecklingAnimateStyle = styles.utvecklingAnimate;
       pilAnimateStyle = styles.pilAnimate;
-      bockStyle = styles.bockAnimate;
+      //bockStyle = styles.bockAnimate;
 
       fillIconColor = '#ce98ef';
 

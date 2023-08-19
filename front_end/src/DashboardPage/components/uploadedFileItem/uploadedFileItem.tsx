@@ -1,4 +1,9 @@
-import React, { memo, useEffect, useState } from 'react';
+import {
+  //React,
+  memo,
+  //useEffect,
+  useState,
+} from 'react';
 import styles from './uploadedFileItem.module.css';
 //const SidePannelButton = (props: { icon:String ; text: String; }) => {
 
@@ -9,7 +14,10 @@ const UploadedFileItem = (props: any) => {
 
   var fileTypeIcongBg: string;
   var fileTypeIconTextBg: string;
-  const [fileSizeProgressText, setFileSizeProgressText] = useState('');
+  const [
+    fileSizeProgressText,
+    //  setFileSizeProgressText
+  ] = useState('');
 
   switch (fileType) {
     case 'pdf':
@@ -56,17 +64,17 @@ const UploadedFileItem = (props: any) => {
       break;
   }
 
-  function convertSize(sizeToConvert: number) {
-    var units = ['B', 'KB', 'MB', 'GB', 'TB'],
-      bytes = sizeToConvert,
-      i;
+  //function convertSize(sizeToConvert: number) {
+  //  var units = ['B', 'KB', 'MB', 'GB', 'TB'],
+  //    bytes = sizeToConvert,
+  //    i;
 
-    for (i = 0; bytes >= 1024 && i < 4; i++) {
-      bytes /= 1024;
-    }
+  //  for (i = 0; bytes >= 1024 && i < 4; i++) {
+  //    bytes /= 1024;
+  //  }
 
-    return bytes.toFixed(1) + units[i];
-  }
+  //  return bytes.toFixed(1) + units[i];
+  //}
 
   const progress = file.progress;
 

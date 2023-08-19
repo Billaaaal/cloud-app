@@ -1,14 +1,18 @@
 //create react app
-import React, { useEffect, useState } from 'react';
+import {
+  //React,
+  useEffect,
+  useState,
+} from 'react';
 
 //import css
 import styles from './LoginPage.module.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+//import { initializeApp } from 'firebase/app';
+//import { getAnalytics } from 'firebase/analytics';
 import {
   getAuth,
-  createUserWithEmailAndPassword,
+  //createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
 } from 'firebase/auth';
@@ -21,20 +25,20 @@ function App() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isAuth, setIsAuth] = useState(false);
-  const [token, setToken] = useState('');
+  //const [isAuth, setIsAuth] = useState(false);
+  //const [token, setToken] = useState('');
   const [loginErrorMessage, setLoginErrorMessage] = useState('');
   const [isLoginLoading, setIsLoginLoading] = useState(false);
 
-  const firebaseConfig = {
-    apiKey: 'AIzaSyC0WzN8b1WZ1BKvYObM_bEOEA7h0NiHmEU',
-    authDomain: 'cloudapp-b1e10.firebaseapp.com',
-    projectId: 'cloudapp-b1e10',
-    storageBucket: 'cloudapp-b1e10.appspot.com',
-    messagingSenderId: '306526058417',
-    appId: '1:306526058417:web:ca2a5ec2035ec1b6806f90',
-    measurementId: 'G-G600B1ZV35',
-  };
+  //const firebaseConfig = {
+  //  apiKey: 'AIzaSyC0WzN8b1WZ1BKvYObM_bEOEA7h0NiHmEU',
+  //  authDomain: 'cloudapp-b1e10.firebaseapp.com',
+  //  projectId: 'cloudapp-b1e10',
+  //  storageBucket: 'cloudapp-b1e10.appspot.com',
+  //  messagingSenderId: '306526058417',
+  //  appId: '1:306526058417:web:ca2a5ec2035ec1b6806f90',
+  //  measurementId: 'G-G600B1ZV35',
+  //};
 
   //const app = initializeApp(firebaseConfig);
   //const analytics = getAnalytics(app);
@@ -49,7 +53,7 @@ function App() {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
+        //const uid = user.uid;
         //alert(uid)
         //then navigate to the dashboard
         // ...
@@ -79,37 +83,42 @@ function App() {
 
     if (!email?.toString().trim()) {
       setLoginErrorMessage('Enter an Email');
+      setIsLoginLoading(false);
     } else if (!password?.toString().trim()) {
       setLoginErrorMessage('Enter a Password');
+      setIsLoginLoading(false);
     } else {
       // handleSignup(e)
 
       signInWithEmailAndPassword(auth, email, password)
-        .then(userCredential => {
-          //console.log(userCredentials.user)
+        .then(
+          //userCredential
+          () => {
+            //console.log(userCredentials.user)
 
-          setIsLoginLoading(false);
+            setIsLoginLoading(false);
 
-          const user = userCredential.user;
+            //const user = userCredential.user;
 
-          navigate('/dashboard/');
-          //not good
-          //userCredentials.user?.getIdToken().then(function(idToken) {
-          // alert(userCredentials.user.email)
-          //console.log(idToken);
-          //setToken(idToken);
-          //setIsAuth(true);
+            navigate('/dashboard/');
+            //not good
+            //userCredentials.user?.getIdToken().then(function(idToken) {
+            // alert(userCredentials.user.email)
+            //console.log(idToken);
+            //setToken(idToken);
+            //setIsAuth(true);
 
-          //navigate("/dashboard", {state:{userCredentials:userCredentials}})
+            //navigate("/dashboard", {state:{userCredentials:userCredentials}})
 
-          //make an api call to the backend to create a user in the database and also the files folder
-          //alert("Token: " + idToken);
-          //});
+            //make an api call to the backend to create a user in the database and also the files folder
+            //alert("Token: " + idToken);
+            //});
 
-          // Sign up successful, do something if needed
-          //alert(userCredential);
-          //alert("Signed up successfuly")
-        })
+            // Sign up successful, do something if needed
+            //alert(userCredential);
+            //alert("Signed up successfuly")
+          },
+        )
         .catch(error => {
           // Sign up failed, handle the error
 

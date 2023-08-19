@@ -1,5 +1,8 @@
 //create react app
-import React, { useEffect } from 'react';
+import {
+  //React,
+  useEffect,
+} from 'react';
 
 //import css
 import styles from './LandingPage.module.css';
@@ -18,7 +21,7 @@ function App() {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-        const uid = user.uid;
+        //const uid = user.uid;
         //alert(uid)
         //then navigate to the dashboard
         // ...

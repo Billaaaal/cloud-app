@@ -1,7 +1,10 @@
-import React from 'react';
+//import React from 'react';
 import styles from './elementButton.module.css';
 import folderIcon from '../../assets/documents.svg';
-import { Dropdown, Menu } from 'antd';
+import {
+  Dropdown,
+  //  Menu
+} from 'antd';
 import { useNavigate } from 'react-router-dom';
 import convertSize from '../../methods/convertSize';
 //const SidePannelButton = (props: { icon:String ; text: String; }) => {
@@ -88,8 +91,8 @@ const ElementButton = (props: any) => {
         onClick={
           isAFile
             ? () => {
-              // console.log('Clicked on ' + item.elementName);
-            }
+                // console.log('Clicked on ' + item.elementName);
+              }
             : () => {
                 navigate('/dashboard' + path);
               }
@@ -121,7 +124,7 @@ const ElementButton = (props: any) => {
         >
           {formatted_date}
         </h1>
-        <h1 className={styles.size}>{isAFile ? convertSize(item.size) : ""}</h1>
+        <h1 className={styles.size}>{isAFile ? convertSize(item.size) : ''}</h1>
       </div>
     </Dropdown>
   );
